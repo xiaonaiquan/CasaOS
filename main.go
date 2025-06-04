@@ -109,12 +109,14 @@ func main() {
 	v2Router := route.InitV2Router()
 	v2DocRouter := route.InitV2DocRouter(_docHTML, _docYAML)
 	v3File := route.InitFile()
+	webDav := route.InitDavRoute()
 	mux := &util_http.HandlerMultiplexer{
 		HandlerMap: map[string]http.Handler{
 			"v1":  v1Router,
 			"v2":  v2Router,
 			"v3":  v3File,
 			"doc": v2DocRouter,
+			"dav": webDav,
 		},
 	}
 
@@ -145,6 +147,8 @@ func main() {
 		"/v1/other",
 		"/v1/zt",
 		"/v1/test",
+		"/v1/dav",
+		"/dav",
 		route.V2APIPath,
 		route.V2DocPath,
 		route.V3FilePath,

@@ -195,6 +195,19 @@ func InitV1Router() http.Handler {
 		{
 			v1ZerotierGroup.Any("/*url", v1.ZerotierProxy)
 		}
+
+		v1WebdavGroup := v1Group.Group("/dav")
+		v1WebdavGroup.Use()
+		{
+			webdavMethods := []string{
+				"GET", "HEAD", "POST", "PUT", "DELETE",
+				"PROPFIND", "MKCOL", "LOCK", "UNLOCK",
+				"PROPPATCH", "COPY", "MOVE", "OPTIONS",
+			}
+			v1WebdavGroup.Match(webdavMethods, "/*path", v1.ServeWebDAV)
+			v1WebdavGroup.Add("PROPFIND", "", v1.ServeWebDAV)
+			v1WebdavGroup.Any("", v1.ServeWebDAV)
+		}
 	}
 
 	return e

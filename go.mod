@@ -40,6 +40,7 @@ require (
 	go.uber.org/goleak v1.2.1
 	go.uber.org/zap v1.24.0
 	golang.org/x/crypto v0.23.0
+	golang.org/x/net v0.25.0
 	golang.org/x/oauth2 v0.7.0
 	golang.org/x/sync v0.3.0
 	golang.org/x/sys v0.20.0
@@ -110,7 +111,6 @@ require (
 	go.uber.org/multierr v1.11.0 // indirect
 	golang.org/x/exp v0.0.0-20230713183714-613f0c0eb8a1 // indirect
 	golang.org/x/image v0.6.0 // indirect
-	golang.org/x/net v0.25.0 // indirect
 	golang.org/x/text v0.15.0 // indirect
 	golang.org/x/time v0.5.0 // indirect
 	google.golang.org/appengine v1.6.7 // indirect
